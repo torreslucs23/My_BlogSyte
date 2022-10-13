@@ -8,6 +8,7 @@
 {% endblock title %}
 
 {% block css_files %}
+    <link rel="stylesheet" href="{% static 'blog/posts.css' %}"/>
     <link rel="stylesheet" href="{% static 'blog/index.css'%}" />
 {% endblock  %}
 
@@ -22,8 +23,8 @@
 
 <section id="welcome">
     <header>
-        <img src="" alt="Lucas - The blog's owner"/>
-        <h2>LUCAS'S BLOG</h2>
+        <img src="{% static 'blog/images/passarin.jpg' %}" alt="Lucas - The blog's owner"/>
+        <h2>LUCAS BLOG</h2>
     </header>
     <p>Hi, i am Lucas Torres and i love programming and tech articles</p>
 </section>
@@ -33,19 +34,7 @@
     <h2> My latest thoughts</h2>
 
     <ul>
-        <li> 
-            <article class = "post">
-                <a href="">
-                    <img src="" alt="Mountain Hiking" />
-                    <div class="post-content">
-                        <h3>Mountain Hiking</h3>
-                        <p>There's nothing like the views you get when hiking in the mountains!  
-                            And i wasn't even prepared for what hapenned whilist i was
-                            enjoying the view!</p>
-                    </div>
-                </a>
-            </article>
-        </li>
+        {% include "blog/includes/posts.html" %}
     </ul>
 
 </section>
