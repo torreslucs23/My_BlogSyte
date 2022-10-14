@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+ my block
+{% endblock title %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static 'blog/post-detail.css' %}"/>
+   
+{% endblock  %}
+
+{% block content %}
+    <section id="summary">
+        <h2>Post Title</h2>
+        <article>
+            <img src="{% static 'blog/images/montanhas.jpg' %}" alt="Post Title"/>
+            <address>By Lucas Torres</address>
+            <div>
+                Last update <time> October, 14</time>
+            </div>
+
+    </section>
+
+    <main>
+        <p>
+            The origin of mountains (orogenesis) occurs after tectonic movements make rock 
+            layers fold and overlap. All the Earth’s surface, the lithosphere, is divided 
+            into rigid areas called continental plates and oceanic plates. These lithospheric plates 
+            continuously move and whenever they bump into each other, they form mountain chains.
+        </p>
+        <p>
+            The origin of mountains (orogenesis) occurs after tectonic movements make rock 
+            layers fold and overlap. All the Earth’s surface, the lithosphere, is divided 
+            into rigid areas called continental plates and oceanic plates. These lithospheric plates 
+            continuously move and whenever they bump into each other, they form mountain chains.
+        </p>
+        <p>
+            The origin of mountains (orogenesis) occurs after tectonic movements make rock 
+            layers fold and overlap. All the Earth’s surface, the lithosphere, is divided 
+            into rigid areas called continental plates and oceanic plates. These lithospheric plates 
+            continuously move and whenever they bump into each other, they form mountain chains.
+        </p>
+
+{% endblock  %}

@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,9 +16,9 @@
 <body>
 
 <header id="main-navigation">
-    <h1><a href="" > Lucas' blog</a><h1>
+    <h1><a href="{% url 'initial-page' %}" > Lucas' blog</a></h1>
     <nav>
-        <a href="">All posts</a>
+        <a href="{% url 'posts-page' %}">All posts</a>
     </nav>
 </header>
 {% block content %}
