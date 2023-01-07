@@ -1,5 +1,5 @@
 #welcome {
-  background: linear-gradient(to right top, #6305dd, #390281);
+  background: linear-gradient(to right top, #454b44, rgb(75, 143, 78));
   padding: 6rem 12%;
 }
 
@@ -13,11 +13,11 @@
   width: 10rem;
   height: 10rem;
   object-fit: cover;
-  object-position: top;
+  object-position:center;
   border: 5px solid white;
   border-radius: 12px;
   background-color: #ffe1bf;
-  transform: rotateZ(-5deg);
+
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
