@@ -5,30 +5,30 @@ class AuthorSerializers(serializers.ModelSerializer):
     
     class Meta:
         model = Author
-        fields = ('first_name', 'last_name','email')
+        fields = ['first_name', 'last_name','email']
 
 
 class TagSerializers(serializers.ModelSerializer):
     
     class Meta:
         model = Tag
-        fields = ('caption')
+        fields = ['caption']
 
-class PostsSerializers(serializers.ModelSerializer):
+class PostSerializers(serializers.ModelSerializer):
 
     author = AuthorSerializers(read_only = True)
-    tags = TagSerializers(read_only = True)
+    tags = TagSerializers(read_only = True, many = True)
 
     class Meta:
         model = Post
-        fields = ('title', 'excerpt', 'image', 'date','slug','content','author','tags')
+        fields = ['title', 'excerpt', 'image', 'date', 'content', 'author', 'tags']
 
 
 class CommentSerializers(serializers.ModelSerializer):
 
-    post = PostsSerializers(read_only = True)
+    post = PostSerializers(read_only = True)
     
     class Meta:
         model = Comment
-        fields = ('name, user_email','text', 'post')
+        fields = ['name, user_email','text', 'post']
 

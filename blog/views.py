@@ -18,20 +18,34 @@ from django.http import HttpResponse
 from .forms import CommentForm
 
 
-def get_date(post):
-    return post.get("date")
+#def get_date(post):
+ #   return post.get("date")
 
 # Create your views here.
 
 @api_view(['GET'])
 def minPostsList(request):
     if request.method == 'GET':
-        data = Post.objects.values('image', 'title', 'excerpt')
+        data = Post.objects.all()
 
-        serializer = PostsSerializers(data, context = {'request': request}, many = True)
+        serializer = PostSerializers(data, context = {'request': request}, many = True)
+
+        print(serializer.data[0])
+
+        return Response(serializer.data)
+    
+@api_view(['GET'])
+def tagsList(request):
+    if request.method == 'GET':
+        data = Tag.objects.all()
+
+        serializer = TagSerializers(data, context = {'request': request}, many = True)
 
         return Response(serializer.data)
 
+
+
+'''
 class starting_page(ListView):
     template_name = "blog/index.html"
     model =  Post
@@ -132,7 +146,7 @@ class ReadLaterView(View):
         return HttpResponseRedirect('/')
 
         
-
+'''
 
 
 
