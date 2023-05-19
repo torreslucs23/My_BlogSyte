@@ -41,7 +41,7 @@ def tagsList(request):
 
         serializer = TagSerializers(data, context = {'request': request}, many = True)
 
-        return Response(serializer.data)
+        return Response(serializer.data, status=204)
 
 
 
