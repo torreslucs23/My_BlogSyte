@@ -1,6 +1,11 @@
 from django.shortcuts import render, get_object_or_404
 
-from .models import Post
+from rest_framework import status
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+
+from .serializers import *
+from .models import Post, Tag, Comment, Author
 
 from django.views.generic import DetailView
 from django.views.generic import ListView
@@ -17,6 +22,15 @@ def get_date(post):
     return post.get("date")
 
 # Create your views here.
+
+@api_view(['GET'])
+def minPostsList(request):
+    if request.method == 'GET':
+        data = Post.objects.values('image', 'title', 'excerpt')
+
+        serializer = PostsSerializers(data, context = {'request': request}, many = True)
+
+        return Response(serializer.data)
 
 class starting_page(ListView):
     template_name = "blog/index.html"
