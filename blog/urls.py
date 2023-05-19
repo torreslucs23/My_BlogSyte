@@ -1,13 +1,16 @@
-from django.urls import path
+from django.urls import path , re_path
+from django.contrib import admin
 from . import views
 
 
 
 urlpatterns = [
-    path("", views.starting_page.as_view(), name="initial-page"),
-    path("posts", views.posts.as_view(), name = "posts-page"),
-    path("posts/<slug:slug>", views.post_detail.as_view(),
-          name = "post-detail-page"),
-    path('read-later', views.ReadLaterView.as_view(), name="read-later")
+    path("admin/", admin.site.urls),
+    re_path(r"^api/minPosts/$", views.minPostsList),
+    re_path(r"^api/lastMinPosts/$", views.lastMinStudents),
+    re_path(r"^api/post/([0-9]+)$", views.postDetail),
+    re_path(r"^api/comments/$", views.commentsList),
+    re_path(r"^api/tags/$", views.tagsList)
+    
 
 ] 
