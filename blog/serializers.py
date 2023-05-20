@@ -23,6 +23,12 @@ class PostSerializers(serializers.ModelSerializer):
         model = Post
         fields = ['title', 'excerpt', 'image', 'date', 'content', 'author', 'tags']
 
+class MinPostSerializers(serializers.ModelSerializer):
+
+    class Meta:
+        model = Post
+        fields = ['title', 'excerpt', 'image']
+
 
 class CommentSerializers(serializers.ModelSerializer):
 

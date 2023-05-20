@@ -26,24 +26,34 @@ from .forms import CommentForm
 @api_view(['GET'])
 def minPostsList(request):
     if request.method == 'GET':
-        data = Post.objects.all()
+        data = Post.objects.values('title', 'excerpt','image')
 
-        serializer = PostSerializers(data, context = {'request': request}, many = True)
+        serializer = MinPostSerializers(data, context = {'request': request}, many = True)
 
-        print(serializer.data[0])
+        print(serializer.data)
 
         return Response(serializer.data)
     
 @api_view(['GET'])
 def tagsList(request):
     if request.method == 'GET':
-        data = Tag.objects.all()
+        data = Tag.objects.values('title','excerpt', 'image')
 
         serializer = TagSerializers(data, context = {'request': request}, many = True)
 
         return Response(serializer.data, status=204)
 
 
+@api_view(["GET"])
+def lastMinPosts(request):
+    if request.method == "GET":
+        data = Post.objects.all()
+        var = len(data)-1
+        data = data[var-2:var+1]
+
+        serializer = MinPostSerializers(data, context = {'request': request}, many = True)
+
+        return Response(serializer.data, status = 200)
 
 '''
 class starting_page(ListView):
