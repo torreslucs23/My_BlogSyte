@@ -26,7 +26,7 @@ from .forms import CommentForm
 @api_view(['GET'])
 def minPostsList(request):
     if request.method == 'GET':
-        data = Post.objects.values('title', 'excerpt','image')
+        data = Post.objects.values('title', 'excerpt','image', 'pk')
 
         serializer = MinPostSerializers(data, context = {'request': request}, many = True)
 
@@ -54,6 +54,21 @@ def lastMinPosts(request):
         serializer = MinPostSerializers(data, context = {'request': request}, many = True)
 
         return Response(serializer.data, status = 200)
+
+@api_view(['GET'])
+def postDetail(request, pk):
+    if request == 'GET':
+        try:
+            post = Post.objects.get(pk=pk)
+            print (post)
+            serializer = PostSerializers(post, context = {'request':request})
+            return Response(serializer.data)
+        
+        except Exception:
+            return Response(status = status.HTTP_404_NOT_FOUND)
+        
+        
+
 
 '''
 class starting_page(ListView):
