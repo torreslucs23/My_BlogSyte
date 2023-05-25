@@ -25,47 +25,44 @@ from .forms import CommentForm
 
 @api_view(['GET'])
 def minPostsList(request):
-    if request.method == 'GET':
-        data = Post.objects.values('title', 'excerpt','image', 'pk')
+    data = Post.objects.all()
 
-        serializer = MinPostSerializers(data, context = {'request': request}, many = True)
+    serializer = MinPostSerializers(data, context = {'request': request}, many = True)
 
-        print(serializer.data)
+    print(serializer.data)
 
-        return Response(serializer.data)
+    return Response(serializer.data)
     
 @api_view(['GET'])
 def tagsList(request):
-    if request.method == 'GET':
-        data = Tag.objects.values('title','excerpt', 'image')
+    data = Tag.objects.values('title','excerpt', 'image')
 
-        serializer = TagSerializers(data, context = {'request': request}, many = True)
+    serializer = TagSerializers(data, context = {'request': request}, many = True)
 
-        return Response(serializer.data, status=204)
+    return Response(serializer.data, status=204)
 
 
 @api_view(["GET"])
 def lastMinPosts(request):
-    if request.method == "GET":
-        data = Post.objects.all()
-        var = len(data)-1
-        data = data[var-2:var+1]
+    data = Post.objects.all()
+    var = len(data)-1
+    data = data[var-2:var+1]
 
-        serializer = MinPostSerializers(data, context = {'request': request}, many = True)
+    serializer = MinPostSerializers(data, context = {'request': request}, many = True)
 
-        return Response(serializer.data, status = 200)
+    return Response(serializer.data, status = 200)
 
 @api_view(['GET'])
 def postDetail(request, pk):
-    if request == 'GET':
-        try:
-            post = Post.objects.get(pk=pk)
-            print (post)
-            serializer = PostSerializers(post, context = {'request':request})
-            return Response(serializer.data)
+    try:
+        post = Post.objects.get(pk=pk)
+        print (post.pk)
+        serializer = PostSerializers(post, context = {'request':request})
+        return Response(serializer.data)
         
-        except Exception:
-            return Response(status = status.HTTP_404_NOT_FOUND)
+    except Exception:
+        return Response(status = status.HTTP_404_NOT_FOUND)
+    
         
         
 
