@@ -61,10 +61,24 @@ def postDetail(request, pk):
         return Response(serializer.data)
         
     except Exception:
-        return Response(status = status.HTTP_404_NOT_FOUND)
+        return Response(status = status.HTTP_400_BAD_REQUEST)
     
         
-        
+
+@api_view(["GET","POST"])
+def commentsList (request):
+    if request.method == "GET":
+        data = Comment.objects.all()
+
+        serializer = CommentSerializers(data, context = {'request':request}, many = True)
+
+        return Response(serializer.data)
+    elif request.method == "POST":
+        serializer = CommentSerializers(data = request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(status = status.HTTP_201_CREATED)
+        return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
 
 
 '''

@@ -32,9 +32,9 @@ class MinPostSerializers(serializers.ModelSerializer):
 
 class CommentSerializers(serializers.ModelSerializer):
 
-    post = PostSerializers(read_only = True)
+    post_pk = serializers.PrimaryKeyRelatedField(source = 'post', queryset = Post.objects.all())
     
     class Meta:
         model = Comment
-        fields = ['name, user_email','text', 'post']
+        fields = ['name', 'user_email','text','post_pk']
 
