@@ -18,8 +18,6 @@ from django.http import HttpResponse
 from .forms import CommentForm
 
 
-#def get_date(post):
- #   return post.get("date")
 
 # Create your views here.
 
