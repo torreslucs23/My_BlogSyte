@@ -1,0 +1,30 @@
+#summary{
+  display: flex;
+  flex-direction: column;
+}
+img{
+  width: 25rem;
+  align-self: center;
+}
+
+.date{
+  align-self: center;
+  font-size: 15px;
+  padding: 1.5rem 1.5rem;
+}
+
+.content{
+  font-style: inherit;
+  color: rgb(181, 197, 210);
+  text-decoration: solid;
+  text-shadow: 1rem;
+  text-align:justify;
+  font-size: 18px;
+}
+
+.author{
+  padding: 1rem;
+  text-align: start;
+  font-size: 14px;
+  font-style: italic;
+}

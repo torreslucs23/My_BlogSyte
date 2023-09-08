@@ -1,0 +1,85 @@
+
+  .my-pic{
+      width: 15rem;
+      height: 15rem;
+      object-fit: cover;
+      border-radius: 50%;
+  }
+
+  .description{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5rem;
+  }
+
+  .description h2{
+    text-align: start;
+  }
+
+  .home h1{
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 1.5rem;
+
+  }
+
+  .post {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .post a {
+      text-decoration: none;
+      color: whitesmoke;
+      transition: all 0.2s ease;
+      padding: 0.5rem;
+    }
+    
+    .post a:hover,
+    .post a:active {
+      transform: scale(1.1);
+      background-color: rgb(10, 10, 58);
+      color: white;
+    }
+    
+    .post img {
+      width: 5rem;
+      height: 5rem;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    
+    .post h3 {
+      margin: 0.25rem 0;
+    }
+
+    .post h2,
+    .post p {
+      margin-bottom: 1rem;
+      max-width: 200px;
+    }
+
+    .post h2::first-letter{
+      text-transform: uppercase;
+    }
+    
+    .post time {
+      color: #666666;
+      margin: 0.25rem;
+      font-style: italic;
+      font-size: 0.85rem;
+    }
+    
+    .post:hover time,
+    .post:active time {
+      color: white;
+    }
+
+  .allposts{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1rem 2rem;
+  }
