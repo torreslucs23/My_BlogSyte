@@ -27,7 +27,7 @@ class MinPostSerializers(serializers.ModelSerializer):
 
     class Meta:
         model = Post
-        fields = ['title', 'excerpt', 'image']
+        fields = ['pk','title', 'excerpt', 'image']
 
 
 class CommentSerializers(serializers.ModelSerializer):
