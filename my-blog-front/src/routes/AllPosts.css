@@ -59,10 +59,34 @@
     color: white;
   }
 
-.allposts-all{
-  display: flex;
-  justify-content: flex-start;
-  padding: 1rem 2rem;
-  flex-wrap: wrap;
-
-}
+  .allposts-all {
+    display: flex;
+    justify-content: center;
+    padding: 1rem 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .allposts-all > div {
+    width: calc(33.33% - 1rem); /* 3 elementos por linha em telas normais */
+    margin-right: 1rem; /* Espaçamento entre os elementos */
+    margin-bottom: 1rem; /* Espaçamento abaixo dos elementos */
+  }
+  
+  /* Limpa a margem direita do último elemento de cada linha em telas normais */
+  .allposts-all > div:nth-child(3n) {
+    margin-right: 0;
+  }
+  
+  /* Limpa a margem inferior do último elemento de cada conjunto de 3 em telas normais */
+  .allposts-all > div:nth-child(3n+1) {
+    margin-bottom: 0;
+  }
+  
+  /* Em telas menores, exibir um elemento por linha */
+  @media (max-width: 768px) {
+    .allposts-all > div {
+      width: 100%; /* 1 elemento por linha em telas menores */
+      margin-right: 0; /* Sem margem direita em telas menores */
+      margin-bottom: 1rem; /* Espaçamento abaixo dos elementos em telas menores */
+    }
+  }

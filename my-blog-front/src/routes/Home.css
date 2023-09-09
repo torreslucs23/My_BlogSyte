@@ -83,3 +83,10 @@
     justify-content: space-around;
     padding: 1rem 2rem;
   }
+
+  @media (max-width: 768px) {
+    .allposts {
+      flex-direction: column; /* Altera a direção para coluna */
+      align-items: center; /* Centraliza verticalmente */
+    }
+  }

@@ -35,9 +35,19 @@ import "./Home.css"
 
   return (
     <div className='home'>
-        <div className='description'>
-            <img src='src/routes/images/papagaio.jpg' className='my-pic'/>
-            <h2>This is my Web blog!!! This project was made using django RestFramework and ReactJS</h2>
+        <div className=''>
+            <img src='src/routes/images/papagaio.jpg' className='my-pic w-220'/>
+            <h2 className="text-2xl text-white font-semibold mb-4">
+            Hi, I'm Lucas Torres. I'm a Computer Science student and a Python lover. 
+            This is my Web Blog Project!!!
+            </h2>
+            <p className="text-lg text-gray-300">
+            This project was made using Django Rest Framework and ReactJS.
+            </p>
+            <br />
+            <br />
+            <br />
+
         </div>
         
         
