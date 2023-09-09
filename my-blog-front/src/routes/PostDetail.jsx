@@ -9,11 +9,51 @@ import { Link, useParams } from 'react-router-dom'
 
 import "./PostDetail.css"
 
+import axios from 'axios'
+
+
 const PostDetail = () => {
+
 
     const {id} = useParams();
 
-    const [post, setPost] = useState([])
+    useEffect(() => {
+
+        getPost();
+        getComments();
+  
+      }, [])
+
+
+    const [post, setPost] = useState({
+
+    })
+
+    const [comments, setComments] = useState([]
+
+    )
+
+    const [comment, setComment] = useState({
+    name: '',
+    user_email: '',
+    text: '', 
+    post_pk: id
+})
+
+    
+
+
+    const getComments = async() =>{
+        const response = await BlogPosts.get(`/comments/`);
+
+        const data = response.data;
+
+        data = data.filter(objeto => objeto.post_pk === id);
+
+        setComments(data);
+
+    }
+    
 
     const getPost = async() => {
         try {
@@ -21,6 +61,7 @@ const PostDetail = () => {
             const response = await BlogPosts.get(`/post/${id}`);
             
             const data = response.data;
+
             setPost(data);
             
         } catch (error) {
@@ -30,11 +71,29 @@ const PostDetail = () => {
     
     
 
-  useEffect(() => {
 
-      getPost();
+    const handleInput = (event) =>{
+        setComment({...comment, [event.target.name]: event.target.value})
+        console.log(event);
+    }
 
-    }, [])
+    function handleSubmit(event) {
+        event.preventDefault()
+        const commentData = {
+            "name": comment.name,
+            "user_email": comment.user_email,
+            "text": comment.text,
+            "post_pk": id
+        }
+
+        console.log(commentData);
+
+        axios.post("http://localhost:8000/api/comments/", JSON.stringify(comment), {
+        headers: { "Content-Type": "application/json" }
+    })
+        .then(response => console.log(response))
+        .catch(err => console.log(err))
+    }
 
   return (
     <div>
@@ -53,9 +112,36 @@ const PostDetail = () => {
                 <p> Created by: {post.author? [post.author.first_name,
                     " ",post.author.last_name, "  -  ",post.author.email ] : ""}</p>
             </div>
-
-            
             </section>
+
+            <div>
+                {comments.length === 0 ? (<p>Carregando...</p>) : (
+                    comments.map((cm) => (
+                        <div>
+                            <p>{cm.name}</p>
+                            <p>{cm.user_email}</p>
+                        </div>
+                    ))
+                )}
+            </div>
+            <br />
+            <br />
+
+            <div className='grid gap-3 mb-6 md:grid-cols-2 '>
+                <h2 className='text-2xl'>Leave a comment</h2>
+                <br />
+                <form onSubmit={handleSubmit} id="form-comment"> 
+                    Name: <input className='block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+                             type='text' onChange={handleInput} name='name'></input> <br />
+                    Email: <input className='block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+                             type='text' onChange={handleInput} name='user_email'></input> <br />
+                    <textarea className='block w-full overflow-auto p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+                             type='text' onChange={handleInput} name='text'></textarea>
+                    <button type='submit' form='form-comment' class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded my-3">
+                        Submit
+                        </button>
+                </form>
+            </div>
         </div>
 
     </div>
