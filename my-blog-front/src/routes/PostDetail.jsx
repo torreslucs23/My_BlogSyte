@@ -19,8 +19,9 @@ const PostDetail = () => {
 
     useEffect(() => {
 
-        getPost();
         getComments();
+        getPost();
+        
   
       }, [])
 
@@ -48,9 +49,13 @@ const PostDetail = () => {
 
         const data = response.data;
 
-        data = data.filter(objeto => objeto.post_pk === id);
+        const data_filtered = data.filter(objeto => objeto.post_pk == id);
 
-        setComments(data);
+        console.log("testando")
+
+        console.log(data_filtered);
+
+        setComments(data_filtered);
 
     }
     
@@ -78,7 +83,6 @@ const PostDetail = () => {
     }
 
     function handleSubmit(event) {
-        event.preventDefault()
         const commentData = {
             "name": comment.name,
             "user_email": comment.user_email,
@@ -114,13 +118,22 @@ const PostDetail = () => {
             </div>
             </section>
 
-            <div>
-                {comments.length === 0 ? (<p>Carregando...</p>) : (
+            <br />
+            <br />
+
+            <div className='border-solid'>
+                <h2 className='mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-3xl dark:text-white '>
+                    Comments</h2>
+                {comments.length === 0 ? (<p className=' font-bold'>Empty comments</p>) : (
                     comments.map((cm) => (
-                        <div>
-                            <p>{cm.name}</p>
-                            <p>{cm.user_email}</p>
-                        </div>
+                        <div className="bg-grey rounded-lg shadow-md p-4 mb-4 text-gray-200 border-2 border-y-slate-800" >
+                            <div>
+                                <p className="font-semibold text-white text-2xl">{">>> "+cm.name}</p>
+                                <p className="text-sm italic">{cm.user_email}</p>
+                                <br />
+                            </div>
+                            <p>{cm.text}</p>
+                            </div>    
                     ))
                 )}
             </div>
