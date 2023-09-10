@@ -51,10 +51,6 @@ const PostDetail = () => {
 
         const data_filtered = data.filter(objeto => objeto.post_pk == id);
 
-        console.log("testando")
-
-        console.log(data_filtered);
-
         setComments(data_filtered);
 
     }
@@ -79,7 +75,7 @@ const PostDetail = () => {
 
     const handleInput = (event) =>{
         setComment({...comment, [event.target.name]: event.target.value})
-        console.log(event);
+        
     }
 
     function handleSubmit(event) {

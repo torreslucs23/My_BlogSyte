@@ -51,16 +51,16 @@ import "./Home.css"
         </div>
         
         
-        <h1>Últimos Posts</h1>
+        <h1>latest posts</h1>
         <div className='allposts'>
-        {posts.length === 0 ? (<p>carregando...</p>) : (
+        {posts.length === 0 ? (<p>loading...</p>) : (
             posts.map((post) => (
                 <div className='post' key={post.id}>
                     <h2>{post.title}</h2>
                     <img src={post.image} alt="" />
                     <p>{post.excerpt}</p>
                     <Link to={`/post/${post.pk}`} className='btn'>
-                        ler mais
+                        read more
                     </Link>
                 </div>
             ))
