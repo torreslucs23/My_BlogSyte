@@ -98,11 +98,11 @@ const PostDetail = () => {
   return (
     <div>
         <div>
-            <section id = "summary">
-            <h2 className='mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white '>
+            <div class = "summary">
+            <h2 class='mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white '>
                 {post.title}
             </h2>
-            <img class='h-auto max-w-full rounded-full h-auto max-w-sm shadow-lg dark:shadow-black/30 hover:scale-110 transition duration-500 cursor-pointer object-cover' 
+            <img class='h-auto max-w-[300px] rounded-full h-auto self-slign-center shadow-lg dark:shadow-black/30 hover:scale-90 transition duration-500 cursor-pointer object-cover' 
             src={post.image} alt="" />
             
             <p className='date'>{post.date}</p>
@@ -112,7 +112,7 @@ const PostDetail = () => {
                 <p> Created by: {post.author? [post.author.first_name,
                     " ",post.author.last_name, "  -  ",post.author.email ] : ""}</p>
             </div>
-            </section>
+            </div>
 
             <br />
             <br />
