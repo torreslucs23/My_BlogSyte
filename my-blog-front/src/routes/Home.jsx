@@ -40,7 +40,7 @@ import "./Home.css"
             <h2 class="text-start text-[20px] mb-20">
             Hi, I'm Lucas Torres. I'm a Computer Science student and a Python lover. 
             This is my Web Blog Project!!!
-            </h2>
+             </h2>
             <p className="text-lg text-gray-300">
             This project was made using Django Rest Framework and ReactJS.
             </p>
