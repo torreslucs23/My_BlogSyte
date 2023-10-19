@@ -36,7 +36,7 @@ import "./Home.css"
   return (
     <div class='home'>
         <div class='description flex flex-col mb-20'>
-            <img src='src/routes/images/papagaio.jpg' class='my-pic w-[210px] h-[210px] object-cover rounded-full self-start mb-10'/>
+            <img src='https://github.com/torreslucs23/My_BlogSyte/blob/main/my-blog-front/src/routes/images/papagaio.jpg' class='my-pic w-[210px] h-[210px] object-cover rounded-full self-start mb-10'/>
             <h2 class="text-start text-[20px] mb-20">
             Hi, I'm Lucas Torres. I'm a Computer Science student and a Python lover. 
             This is my Web Blog Project!!!
